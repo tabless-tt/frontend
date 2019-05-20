@@ -24,9 +24,9 @@ export const LogIn = credentials => dispatch => {
         .then( res => {
             //checking results
             console.log('User data: ');
-            console.log(res.data.payload);
-            localStorage.setItem('token', res.data.payload);
-            dispatch({type: LOGIN_SUCCESS, payload: res.data.payload});
+            console.log(res.data.message);
+            localStorage.setItem('token', res.data.token);
+            dispatch({type: LOGIN_SUCCESS, payload: res.data.token});
         })
         .catch(error => console.log(error))
 };
@@ -48,8 +48,8 @@ export const Register = newUser => dispatch => {
         .then(res => {
             //checking results
             console.log('Register data: ');
-            console.log(res.data.payload);
-            dispatch({type: REGISTER_SUCCESS, payload: res.data.payload});
+            console.log(res.data);
+            dispatch({type: REGISTER_SUCCESS});
         })
         .catch(error => console.log(error))
 };
@@ -64,6 +64,8 @@ export const TABFETCH_FAILURE = 'TABFETCH_FAILURE';
 
 //tab fetch
 
-export const FetchTabs = () => dispatch => {
+export const fetchTabs = () => dispatch => {
+    dispatch({type: TABFETCH_START});
+
     return console.log('fetch');
 }

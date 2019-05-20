@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 //Components
 import PrivateRoute from './PrivateRoute';
 import LoginPage from './components/Login/LoginPage';
-import SignUpPage from './components/Login/SignUpPage';
+import RegisterPage from './components/Login/RegisterPage';
+import Tabs from './components/Tabs/Tabs';
 
 //style
 import './App.css';
@@ -26,7 +27,7 @@ function App() {
         </div>
 
         <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignUpPage} />
+        <Route path="/signup" component={RegisterPage} />
         <PrivateRoute exact path="/tabs" component={Tabs} />
       </div>
     </Router>

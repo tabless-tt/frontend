@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { LogIn } from '../../actions';
 
+import './login.css';
+
 //import actions
 
 class LoginPage extends React.Component {
@@ -32,6 +34,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div className="login-container">
+                <h3> Login </h3> 
                 <form className="login-form" onSubmit={this.login}>
                     
                     <input

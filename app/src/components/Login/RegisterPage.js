@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import { Register } from '../../actions';
 
-class SignUpPage extends React.Component {
+import './login.css';
+
+class RegisterPage extends React.Component {
     state = {
         regauth: {
             username: '',
@@ -35,8 +36,9 @@ class SignUpPage extends React.Component {
 
     render() {
         return (
-            <div className="signup-container">
-                <form className="signup-form" onSubmit={this.register}>
+            <div className="register-container">
+                <h3> Register </h3>
+                <form className="register-form" onSubmit={this.register}>
 
                     <input
                         type="text"
@@ -60,7 +62,7 @@ class SignUpPage extends React.Component {
                         value={this.state.regauth.email}
                     />
 
-                    <button> Sign Up </button>
+                    <button> Register </button>
                 </form>
             </div>
     )};
@@ -70,4 +72,4 @@ const mapStateToProps = state => ({
     isRegistering : state.isRegistering
 });
 
-export default connect(mapStateToProps, { Register })(SignUpPage);
+export default connect(mapStateToProps, { Register })(RegisterPage);
