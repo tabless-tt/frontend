@@ -1,0 +1,68 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { LogIn } from '../../actions';
+
+import './login.css';
+
+//import actions
+
+class LoginPage extends React.Component {
+    state = {
+        auth: {
+            username: '',
+            password: '',
+        }
+    };
+
+    handleChanges = e => {
+        this.setState({
+            auth: {
+                ...this.state.auth,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
+
+    login = e => {
+        e.preventDefault();
+        // check auth for proper info
+        console.log(this.state.auth);
+        this.props.LogIn(this.state.auth)
+    }
+
+
+    render() {
+        return (
+            <div className="login-container">
+                <h3> Login </h3> 
+                <form className="login-form" onSubmit={this.login}>
+                    
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        onChange={this.handleChanges}
+                        value={this.state.auth.username}
+                    />
+
+                    <input
+                        type="text"
+                        name="password"
+                        placeholder="Password"
+                        onChange={this.handleChanges}
+                        value={this.state.auth.password}
+                    />
+
+                    <button> Login </button>
+                </form>
+            </div>
+        )};
+}
+
+
+const mapStateToProps = state => ({
+    isLoggingIn: state.isLoggingIn
+});
+
+
+export default connect(mapStateToProps, { LogIn })(LoginPage);
