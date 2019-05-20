@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //Components
+import PrivateRoute from './PrivateRoute';
 import LoginPage from './components/Login/LoginPage';
 import SignUpPage from './components/Login/SignUpPage';
 
@@ -26,6 +27,7 @@ function App() {
 
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignUpPage} />
+        <PrivateRoute exact path="/tabs" component={Tabs} />
       </div>
     </Router>
   );

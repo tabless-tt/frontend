@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { LogIn } from '../../actions';
 
 //import actions
 
@@ -22,14 +23,17 @@ class LoginPage extends React.Component {
 
     login = e => {
         e.preventDefault();
-        //login action --> push to tabs page
+        // check auth for proper info
+        console.log(this.state.auth);
+        this.props.LogIn(this.state.auth)
     }
 
 
     render() {
         return (
             <div className="login-container">
-                <form className="login-form">
+                <form className="login-form" onSubmit={this.login}>
+                    
                     <input
                         type="text"
                         name="username"
@@ -58,4 +62,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps)(LoginPage);
+export default connect(mapStateToProps, { LogIn })(LoginPage);
