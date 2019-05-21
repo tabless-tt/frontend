@@ -9,9 +9,6 @@ import {
     TABFETCH_START,
     TABFETCH_SUCCESS,
     TABFETCH_FAILURE
-    // USERFETCH_START,
-    // USERFETCH_SUCCESS,
-    // USERFETCH_FAILURE
 } from '../actions';
 
 //initial
@@ -30,8 +27,6 @@ const initialState = {
 //reducer
 
 function reducer(state = initialState, action) {
-    console.log('Reducer');
-    console.log(action);
     switch(action.type) {
         case LOGIN_START:
             return {
@@ -90,25 +85,6 @@ function reducer(state = initialState, action) {
                 fetchingTabs: false,
                 error: 'Fetching Tabs failed'
             }
-        // case USERFETCH_START:
-        //     return {
-        //         ...state,
-        //         fetchingUser: true,
-        //         error: ''
-        //     }
-        // case USERFETCH_SUCCESS:
-        //     return {
-        //         ...state,
-        //         fetchingUser: false,
-        //         error: '',
-        //         user: action.payload
-        //     }
-        // case USERFETCH_FAILURE:
-        //     return {
-        //         ...state,
-        //         fetchingUser: false,
-        //         error: 'User Fetch Failure'
-        //     }
         
         default: 
             return state;
