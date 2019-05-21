@@ -34,6 +34,7 @@ export const LogIn = credentials => dispatch => {
             //console.log(res.data.message);
             //console.log(res.data)
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('userid', res.data.user.id);
             dispatch({type: LOGIN_SUCCESS, payload: res.data});
         })
         .catch(error => {
@@ -61,6 +62,7 @@ export const Register = newUser => dispatch => {
             //console.log('Register data: ');
             //console.log(res.data);
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('userid', res.data.saved.id);
             dispatch({type: REGISTER_SUCCESS, payload: res.data});
         })
         .catch(error => {
@@ -82,14 +84,14 @@ export const TABFETCH_FAILURE = 'TABFETCH_FAILURE';
 export const fetchTabs = id => dispatch => {
     dispatch({type: TABFETCH_START});
     axiosAuth()
-        .get(`https://tabless-thursday-backend.herokuapp.com/api/tabs`)
+        .get(`https://tabless-thursday-backend.herokuapp.com/api/users/${id}`)
         .then(res => {
-            console.log('tab data: ')
-            console.log(id);
-            console.log(res.data)
+            //console.log('tab data: ')
+            //console.log(id);
+            console.log(res.data.tabs)
 
-            let tabs = res.data.filter(tab => tab.user_id === id)
-            dispatch({type: TABFETCH_SUCCESS, payload: tabs})
+            //let tabs = res.data.filter(tab => tab.user_id === id)
+            dispatch({type: TABFETCH_SUCCESS, payload: res.data.tabs})
         })
         .catch(error => {
             console.log(error);
@@ -97,25 +99,49 @@ export const fetchTabs = id => dispatch => {
         })
 }
 
-//get User types
+//New Tab types
 
-// export const USERFETCH_START = 'USERFETCH_START'
-// export const USERFETCH_SUCCESS = 'USERFETCH_SUCCESS'
-// export const USERFETCH_FAILURE = 'USERFETCH_FAILURE'
+export const NEWTAB_START = 'NEWTAB_START';
+export const NEWTAB_SUCCESS = 'NEWTAB_SUCCESS';
+export const NEWTAB_FAILURE = 'NEWTAB_FAILURE';
 
-// //get current user
 
-// export const getUser = () => dispatch => {
-//     dispatch({type: USERFETCH_START});
-//     axiosAuth()
-//         .get(`https://tabless-thursday-backend.herokuapp.com/api/users/`)
-//         .then(res => {
-//             console.log('user data: ');
-//             console.log(res.data);
-//             dispatch({type: USERFETCH_SUCCESS, payload: res.data})
-//         })
-//         .catch(error => {
-//             console.log(error);
-//             dispatch({type: USERFETCH_FAILURE})
-//         })
-// }
+export const newTab = tab => dispatch => {
+    //console.log('tab is now inside newTab and: ');
+    tab = {
+        ...tab, 
+        user_id: localStorage.getItem('userid')
+    }
+    //console.log(tab);
+    dispatch({type: NEWTAB_START});
+    axiosAuth()
+        .post(`https://tabless-thursday-backend.herokuapp.com/api/tabs`, tab)
+        .then(res => {
+            //console.log('New tab: ');
+            //console.log(res.data);
+            dispatch({type: NEWTAB_SUCCESS})
+        })
+        .catch(error => {
+            //console.log(error);
+            dispatch({type: NEWTAB_FAILURE});
+        })
+}
+
+export const DELETETAB_START = 'DELETETAB_START';
+export const DELETETAB_SUCCESS = 'DELETETAB_SUCCESS';
+export const DELETETAB_FAILURE = 'DELETETAB_FAILURE';
+
+export const deleteTab = id => dispatch => {
+    dispatch({type: DELETETAB_START});
+    axiosAuth()
+        .delete(`https://tabless-thursday-backend.herokuapp.com/api/tabs/${id}`)
+        .then(res => {
+            console.log('inside delete');
+            console.log(res);
+            dispatch({type: DELETETAB_SUCCESS});
+        })
+        .catch(error => {
+            console.log(error);
+            dispatch({type: DELETETAB_FAILURE});
+        })
+}

@@ -8,10 +8,10 @@ import {
     REGISTER_FAILURE,
     TABFETCH_START,
     TABFETCH_SUCCESS,
-    TABFETCH_FAILURE
-    // USERFETCH_START,
-    // USERFETCH_SUCCESS,
-    // USERFETCH_FAILURE
+    TABFETCH_FAILURE,
+    DELETETAB_START,
+    DELETETAB_SUCCESS,
+    DELETETAB_FAILURE
 } from '../actions';
 
 //initial
@@ -24,14 +24,13 @@ const initialState = {
     isRegistering: false,
     fetchingTabs: false,
     fetchingUser: false,
+    deletingTab: false,
     error: ''
 }
 
 //reducer
 
 function reducer(state = initialState, action) {
-    console.log('Reducer');
-    console.log(action);
     switch(action.type) {
         case LOGIN_START:
             return {
@@ -90,25 +89,24 @@ function reducer(state = initialState, action) {
                 fetchingTabs: false,
                 error: 'Fetching Tabs failed'
             }
-        // case USERFETCH_START:
-        //     return {
-        //         ...state,
-        //         fetchingUser: true,
-        //         error: ''
-        //     }
-        // case USERFETCH_SUCCESS:
-        //     return {
-        //         ...state,
-        //         fetchingUser: false,
-        //         error: '',
-        //         user: action.payload
-        //     }
-        // case USERFETCH_FAILURE:
-        //     return {
-        //         ...state,
-        //         fetchingUser: false,
-        //         error: 'User Fetch Failure'
-        //     }
+        case DELETETAB_START:
+            return {
+                ...state,
+                deletingTab: true,
+                error: ''
+            }
+        case DELETETAB_SUCCESS: 
+            return {
+                ...state,
+                deletingTab: false,
+                error: ''
+            }
+        case DELETETAB_FAILURE:
+            return {
+                ...state,
+                deletingTab: false,
+                error: 'Deleting tab failed'
+            }
         
         default: 
             return state;
