@@ -43,7 +43,6 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoggingIn: false,
-                //add payload
                 user: action.payload.user,
                 error: ''
             }
@@ -63,7 +62,6 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isRegistering: false,
-                //add payload
                 user: action.payload.saved,
                 error: ''
             }

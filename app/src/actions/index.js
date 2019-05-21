@@ -1,6 +1,5 @@
 import axios from 'axios';
 import axiosAuth from '../axiosAuth'
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 // Server Routes
 // `https://tabless-thursday-backend.herokuapp.com/api/users` get request, need token as header, recieve an array of users each with {id, username, password}
@@ -32,8 +31,8 @@ export const LogIn = credentials => dispatch => {
         )
         .then( res => {
             //checking results
-            console.log(res.data.message);
-            console.log(res.data)
+            //console.log(res.data.message);
+            //console.log(res.data)
             localStorage.setItem('token', res.data.token);
             dispatch({type: LOGIN_SUCCESS, payload: res.data});
         })
@@ -59,8 +58,8 @@ export const Register = newUser => dispatch => {
         )
         .then(res => {
             //checking results
-            console.log('Register data: ');
-            console.log(res.data);
+            //console.log('Register data: ');
+            //console.log(res.data);
             localStorage.setItem('token', res.data.token);
             dispatch({type: REGISTER_SUCCESS, payload: res.data});
         })
@@ -80,13 +79,17 @@ export const TABFETCH_FAILURE = 'TABFETCH_FAILURE';
 
 //tab fetch
 
-export const fetchTabs = () => dispatch => {
+export const fetchTabs = id => dispatch => {
     dispatch({type: TABFETCH_START});
     axiosAuth()
         .get(`https://tabless-thursday-backend.herokuapp.com/api/tabs`)
         .then(res => {
             console.log('tab data: ')
+            console.log(id);
             console.log(res.data)
+
+            let tabs = res.data.filter(tab => tab.user_id === id)
+            dispatch({type: TABFETCH_SUCCESS, payload: tabs})
         })
         .catch(error => {
             console.log(error);
