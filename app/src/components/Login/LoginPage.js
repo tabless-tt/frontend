@@ -27,7 +27,9 @@ class LoginPage extends React.Component {
         e.preventDefault();
         // check auth for proper info
         console.log(this.state.auth);
-        this.props.LogIn(this.state.auth)
+        this.props.LogIn(this.state.auth).then(() => {
+            this.props.history.push('/tabs');
+        })
     }
 
 

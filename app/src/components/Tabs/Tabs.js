@@ -7,11 +7,14 @@ import Tab from './Tab';
 
 class Tabs extends React.Component {
     state = {
-        tabs: []
+        tabs: [],
+        user: {}
     }
 
     componentDidMount() {
-        this.props.fetchTabs();
+        this.setState({user: this.props.userInfo});
+        console.log(this.state.user);
+        //this.props.fetchTabs();
         //fetch tabs action creator
     }
 
@@ -27,7 +30,8 @@ class Tabs extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    fetchingTabs: state.fetchingTabs
+    fetchingTabs: state.fetchingTabs,
+    userInfo: state.user
 });
 
 export default connect(mapStateToProps, { fetchTabs })(Tabs);
