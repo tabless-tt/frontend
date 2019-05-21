@@ -9,6 +9,9 @@ import {
     TABFETCH_START,
     TABFETCH_SUCCESS,
     TABFETCH_FAILURE
+    // USERFETCH_START,
+    // USERFETCH_SUCCESS,
+    // USERFETCH_FAILURE
 } from '../actions';
 
 //initial
@@ -20,6 +23,7 @@ const initialState = {
     isLoggingIn: false,
     isRegistering: false,
     fetchingTabs: false,
+    fetchingUser: false,
     error: ''
 }
 
@@ -39,6 +43,7 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isLoggingIn: false,
+                user: action.payload.user,
                 error: ''
             }
         case LOGIN_FAILURE:
@@ -57,6 +62,7 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 isRegistering: false,
+                user: action.payload.saved,
                 error: ''
             }
         case REGISTER_FAILURE:
@@ -84,6 +90,25 @@ function reducer(state = initialState, action) {
                 fetchingTabs: false,
                 error: 'Fetching Tabs failed'
             }
+        // case USERFETCH_START:
+        //     return {
+        //         ...state,
+        //         fetchingUser: true,
+        //         error: ''
+        //     }
+        // case USERFETCH_SUCCESS:
+        //     return {
+        //         ...state,
+        //         fetchingUser: false,
+        //         error: '',
+        //         user: action.payload
+        //     }
+        // case USERFETCH_FAILURE:
+        //     return {
+        //         ...state,
+        //         fetchingUser: false,
+        //         error: 'User Fetch Failure'
+        //     }
         
         default: 
             return state;

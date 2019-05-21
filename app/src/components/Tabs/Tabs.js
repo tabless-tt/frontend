@@ -7,19 +7,23 @@ import Tab from './Tab';
 
 class Tabs extends React.Component {
     state = {
-        tabs: []
+        tabs: [],
+        user: {}
     }
 
     componentDidMount() {
-        this.props.fetchTabs();
+        this.setState({user: this.props.userInfo});
         //fetch tabs action creator
+        let temp = this.props.fetchTabs(this.props.userInfo.id);
+        console.log('temp: ', temp);
+        this.setState({tabs: temp});
     }
 
     render() {
         return (
             <div className="tabs-container">
-                {this.state.tabs.map(tab => {
-                    return <Tab key={tab.name} tab={tab} />;
+                {this.props.userTabs.map(tab => {
+                    return <Tab key={tab.tab_id} tab={tab} />;
                 })}
             </div>
         );
@@ -27,7 +31,9 @@ class Tabs extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    fetchingTabs: state.fetchingTabs
+    fetchingTabs: state.fetchingTabs,
+    userInfo: state.user,
+    userTabs: state.tabs
 });
 
 export default connect(mapStateToProps, { fetchTabs })(Tabs);

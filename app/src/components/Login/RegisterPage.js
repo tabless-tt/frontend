@@ -29,7 +29,7 @@ class RegisterPage extends React.Component {
         console.log(this.state.regauth);
 
         this.props.Register(this.state.regauth).then( () => {
-            this.props.history.push('/login');
+            this.props.history.push('/tabs');
         })
     }
 
