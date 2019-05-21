@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { deleteTab } from '../../actions';
+import { deleteTab, updateTab } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 
@@ -10,14 +10,21 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 class Tab extends React.Component {
     state = {
-        modal: false
+        modal: false,
+        updatedtab: {
+            title: null,
+            website: null,
+            description: null,
+            category: null,
+            favicon: null
+        }
     }
 
     
     modalhandleChanges = e => {
         this.setState({
-            newtab: {
-                ...this.state.newtab,
+            updatedtab: {
+                ...this.state.updatedtab,
                 [e.target.name]: e.target.value
             }
         });
@@ -31,20 +38,21 @@ class Tab extends React.Component {
     }
 
     submitHandler = e => {
-        console.log(this.props);
         e.preventDefault();
         console.log('inside submitHandler');
+        console.log(this.state.updatedtab);
+        console.log(this.props.tab.tab_id);
+        this.props.updateTab(this.state.updatedtab, this.props.tab.tab_id);
     }
 
     deleteTabHandler = () => {
         console.log('inside Delete Handler');
-        console.log(this.props);
         this.props.deleteTab(this.props.tab.tab_id);
         this.toggle();
     }
 
     render() {
-        console.log(this.props);
+        //console.log(this.props);
         return (
             <div className="tab-container">
                 <div className="tab">
@@ -54,9 +62,50 @@ class Tab extends React.Component {
                     <button className='editbutton' onClick={this.toggle}>Edit</button>
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                            <ModalHeader> Edit your Tab <button onClick={this.deleteTabHandler}> Delete Tab </button> </ModalHeader>
-                            <form>
-                                <ModalBody> Do it </ModalBody>
+                            <ModalHeader> Edit your Tab <button onClick={this.deleteTabHandler}> X </button> </ModalHeader>
+                            <form onSubmit={this.submitHandler}>
+                                <ModalBody> 
+                                    <p> Title: </p>
+                                        <input 
+                                            type="text"
+                                            name="title"
+                                            placeholder={this.props.tab.title}
+                                            onChange={this.modalhandleChanges}
+                                            value={this.state.updatedtab.title} 
+                                        />
+                                    <p> Website URL: </p>
+                                        <input 
+                                            type="text"
+                                            name="website"
+                                            placeholder={this.props.tab.website}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.website}
+                                        />
+                                    <p> Category: </p>
+                                        <input 
+                                            type="text"
+                                            name="category"
+                                            placeholder={this.props.tab.category}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.category}
+                                        />
+                                    <p> Favicon URL: </p>
+                                        <input 
+                                            type="text"
+                                            name="favicon"
+                                            placeholder={this.props.tab.favicon}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.favicon}
+                                        />
+                                    <p> Description: </p>
+                                        <input
+                                            type="text"
+                                            name="description"
+                                            placeholder={this.props.tab.description}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.description}
+                                        />
+                                </ModalBody>
                                 <ModalFooter><button> Submit Changes </button> </ModalFooter>
                             </form>
                 </Modal>
@@ -68,4 +117,4 @@ const mapStateToProps = state => ({
     deletingTab: state.deletingTab
 });
 
-export default connect(mapStateToProps, { deleteTab })(Tab);
+export default connect(mapStateToProps, { deleteTab, updateTab })(Tab);

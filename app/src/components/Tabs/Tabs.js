@@ -43,16 +43,16 @@ class Tabs extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        console.log(this.props.userInfo.id);
-        console.log("inside submitHandler");
+        //console.log(this.props.userInfo.id);
+        //console.log("inside submitHandler");
 
         //new tab action
-        console.log('newtab is currently: ')
-        let newtab = {
-            ...this.state.newtab,
-            user_id: this.props.userInfo.id
-        }
-        console.log(newtab);
+        //console.log('newtab is currently: ')
+        // let newtab = {
+        //     ...this.state.newtab,
+        //     user_id: this.props.userInfo.id
+        // }
+        //console.log(newtab);
         this.props.newTab(this.state.newtab)
         //close modal
         this.toggle();

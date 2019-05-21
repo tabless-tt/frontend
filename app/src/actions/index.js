@@ -127,9 +127,14 @@ export const newTab = tab => dispatch => {
         })
 }
 
+// Delete Tab Types
+
 export const DELETETAB_START = 'DELETETAB_START';
 export const DELETETAB_SUCCESS = 'DELETETAB_SUCCESS';
 export const DELETETAB_FAILURE = 'DELETETAB_FAILURE';
+
+
+//delete Tab action
 
 export const deleteTab = id => dispatch => {
     dispatch({type: DELETETAB_START});
@@ -144,4 +149,36 @@ export const deleteTab = id => dispatch => {
             console.log(error);
             dispatch({type: DELETETAB_FAILURE});
         })
+}
+
+//update Tab Types
+
+export const UPDATETAB_START = 'UPDATETAB_START';
+export const UPDATETAB_SUCCESS = 'UPDATETAB_SUCCESS';
+export const UPDATETAB_FAILURE = 'UPDATETAB_FAILURE';
+
+// update tab action
+
+export const updateTab = (updatedTab, tabid) => dispatch => {
+    // let tab = {
+    //     ...updatedTab,
+    //     tab_id: tabid
+    // }
+    console.log('inside updateTab');
+    console.log(updatedTab);
+    console.log(tabid);
+    //console.log(tab);
+    dispatch({type: UPDATETAB_START})
+    axiosAuth()
+        .put(`https://tabless-thursday-backend.herokuapp.com/api/tabs/${tabid}`, updatedTab)
+        .then(res => {
+            console.log('inside .then of updated tab');
+            console.log(res);
+            dispatch({type: UPDATETAB_SUCCESS});
+        })
+        .catch(error => {
+            console.log(error);
+            dispatch({type: UPDATETAB_FAILURE});
+        })
+
 }
