@@ -53,7 +53,7 @@ class Tabs extends React.Component {
             user_id: this.props.userInfo.id
         }
         console.log(newtab);
-        this.props.newTab(this.state.newtab);
+        this.props.newTab(this.state.newtab)
         //close modal
         this.toggle();
     }

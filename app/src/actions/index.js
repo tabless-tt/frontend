@@ -84,11 +84,10 @@ export const TABFETCH_FAILURE = 'TABFETCH_FAILURE';
 export const fetchTabs = id => dispatch => {
     dispatch({type: TABFETCH_START});
     axiosAuth()
-        //.get(`https://tabless-thursday-backend.herokuapp.com/api/tabs`)
         .get(`https://tabless-thursday-backend.herokuapp.com/api/users/${id}`)
         .then(res => {
-            console.log('tab data: ')
-            console.log(id);
+            //console.log('tab data: ')
+            //console.log(id);
             console.log(res.data.tabs)
 
             //let tabs = res.data.filter(tab => tab.user_id === id)
@@ -108,22 +107,41 @@ export const NEWTAB_FAILURE = 'NEWTAB_FAILURE';
 
 
 export const newTab = tab => dispatch => {
-    console.log('tab is now inside newTab and: ');
+    //console.log('tab is now inside newTab and: ');
     tab = {
         ...tab, 
         user_id: localStorage.getItem('userid')
     }
-    console.log(tab);
+    //console.log(tab);
     dispatch({type: NEWTAB_START});
     axiosAuth()
         .post(`https://tabless-thursday-backend.herokuapp.com/api/tabs`, tab)
         .then(res => {
-            console.log('New tab: ');
-            console.log(res);
+            //console.log('New tab: ');
+            //console.log(res.data);
             dispatch({type: NEWTAB_SUCCESS})
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
             dispatch({type: NEWTAB_FAILURE});
+        })
+}
+
+export const DELETETAB_START = 'DELETETAB_START';
+export const DELETETAB_SUCCESS = 'DELETETAB_SUCCESS';
+export const DELETETAB_FAILURE = 'DELETETAB_FAILURE';
+
+export const deleteTab = id => dispatch => {
+    dispatch({type: DELETETAB_START});
+    axiosAuth()
+        .delete(`https://tabless-thursday-backend.herokuapp.com/api/tabs/${id}`)
+        .then(res => {
+            console.log('inside delete');
+            console.log(res);
+            dispatch({type: DELETETAB_SUCCESS});
+        })
+        .catch(error => {
+            console.log(error);
+            dispatch({type: DELETETAB_FAILURE});
         })
 }
