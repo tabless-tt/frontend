@@ -11,7 +11,10 @@ import {
     TABFETCH_FAILURE,
     DELETETAB_START,
     DELETETAB_SUCCESS,
-    DELETETAB_FAILURE
+    DELETETAB_FAILURE,
+    UPDATETAB_START,
+    UPDATETAB_SUCCESS,
+    UPDATETAB_FAILURE
 } from '../actions';
 
 //initial
@@ -25,6 +28,7 @@ const initialState = {
     fetchingTabs: false,
     fetchingUser: false,
     deletingTab: false,
+    updatingTab: false,
     error: ''
 }
 
@@ -107,7 +111,25 @@ function reducer(state = initialState, action) {
                 deletingTab: false,
                 error: 'Deleting tab failed'
             }
-        
+        case UPDATETAB_START:
+            return {
+                ...state,
+                updatingTab: true,
+                error: ''
+            }
+        case UPDATETAB_SUCCESS:
+            return {
+                ...state,
+                updatingTab: false,
+                error: ''
+            }
+        case UPDATETAB_FAILURE:
+            return {
+                ...state,
+                updatingTab: false,
+                error: ''
+            }
+            
         default: 
             return state;
     }
