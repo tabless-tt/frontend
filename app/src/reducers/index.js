@@ -9,6 +9,9 @@ import {
     TABFETCH_START,
     TABFETCH_SUCCESS,
     TABFETCH_FAILURE,
+    NEWTAB_START,
+    NEWTAB_SUCCESS,
+    NEWTAB_FAILURE,
     DELETETAB_START,
     DELETETAB_SUCCESS,
     DELETETAB_FAILURE,
@@ -27,6 +30,7 @@ const initialState = {
     isRegistering: false,
     fetchingTabs: false,
     fetchingUser: false,
+    addingTab: false,
     deletingTab: false,
     updatingTab: false,
     error: ''
@@ -92,6 +96,25 @@ function reducer(state = initialState, action) {
                 ...state,
                 fetchingTabs: false,
                 error: 'Fetching Tabs failed'
+            }
+        case NEWTAB_START:
+            return {
+                ...state,
+                addingTab: true,
+                error: ''
+            }
+        case NEWTAB_SUCCESS: 
+            return {
+                ...state,
+                addingTab: false,
+                error: '',
+                tabs: [...state.tabs, action.payload]
+            }
+        case NEWTAB_FAILURE:
+            return {
+                ...state,
+                addingTab: false,
+                error: "Adding tab failed"
             }
         case DELETETAB_START:
             return {

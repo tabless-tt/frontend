@@ -117,9 +117,9 @@ export const newTab = tab => dispatch => {
     axiosAuth()
         .post(`https://tabless-thursday-backend.herokuapp.com/api/tabs`, tab)
         .then(res => {
-            //console.log('New tab: ');
-            //console.log(res.data);
-            dispatch({type: NEWTAB_SUCCESS})
+            console.log('New tab: ');
+            console.log(res);
+            dispatch({type: NEWTAB_SUCCESS, payload: res.data[0]})
         })
         .catch(error => {
             //console.log(error);
@@ -182,3 +182,5 @@ export const updateTab = (updatedTab, tabid) => dispatch => {
         })
 
 }
+
+//Sort the categories?? 
