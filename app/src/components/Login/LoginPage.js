@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { LogIn } from '../../actions';
 
-import './login.css';
+import { Link } from 'react-router-dom';
+
+import './login.scss';
 
 //import actions
 
@@ -28,7 +30,7 @@ class LoginPage extends React.Component {
         // check auth for proper info
         console.log(this.state.auth);
         this.props.LogIn(this.state.auth).then(() => {
-            this.props.history.push('/tabs');
+            this.props.history.push('/home');
         })
     }
 
@@ -36,6 +38,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div className="login-container">
+                <div className="login-inner-container">
                 <h3> Login </h3> 
                 <form className="login-form" onSubmit={this.login}>
                     
@@ -56,7 +59,10 @@ class LoginPage extends React.Component {
                     />
 
                     <button> Login </button>
+
+                    <h4> Not a member? Sign up <Link to="/signup"> here </Link></h4>
                 </form>
+                </div>
             </div>
         )};
 }

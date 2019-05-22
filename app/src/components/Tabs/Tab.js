@@ -77,7 +77,9 @@ class Tab extends React.Component {
                     <div className="tab">
                         <img src={`${this.props.tab.website}/favicon.ico`} alt='stariconsmall'/>
                         <h3 className='tab-title'>{this.props.tab.title}</h3>
+                        <h5 className='tab-category'>{this.props.tab.category} </h5>
                         <p className='tab-website'>{this.props.tab.website}</p>
+                        <p className='tab-description'>{this.props.tab.description}</p>
                         <button className='editbutton' onClick={this.toggle}>Edit</button>
                     </div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
@@ -126,7 +128,7 @@ class Tab extends React.Component {
                                             />
                                     </ModalBody>
                                     <ModalFooter><button> Submit Changes </button> </ModalFooter>
-                                </form>
+                            </form>
                     </Modal>
                 </div>
                 )};

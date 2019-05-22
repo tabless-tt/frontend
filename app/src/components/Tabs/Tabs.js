@@ -82,6 +82,7 @@ class Tabs extends React.Component {
                         <ModalHeader toggle={this.toggle}> Add a new Tab </ModalHeader>
                         <ModalBody>
                             <form className="newTab-form" onSubmit={this.submitHandler}>
+                                <p> Title: </p>
                                 <input 
                                     type="text"
                                     name="title"
@@ -89,6 +90,7 @@ class Tabs extends React.Component {
                                     value={this.state.newtab.title} 
                                     onChange={this.modalhandleChanges}
                                     />
+                                <p> Website: https://www.domain.com</p>
                                 <input 
                                     type="text"
                                     name="website"
@@ -96,6 +98,7 @@ class Tabs extends React.Component {
                                     value={this.state.newtab.website} 
                                     onChange={this.modalhandleChanges}
                                     />
+                                <p> Description: </p>
                                 <input 
                                     className="description-input"
                                     type="text"
@@ -104,13 +107,13 @@ class Tabs extends React.Component {
                                     value={this.state.newtab.description} 
                                     onChange={this.modalhandleChanges}
                                     />
-                                <input
+                                {/* <input
                                     type="text"
                                     name="favicon"
                                     placeholder="Favicon URL"
                                     value={this.state.newtab.favicon}
                                     onChange={this.modalhandleChanges}
-                                    />
+                                    /> */}
 
                                     <button> Submit </button>
                             </form>
