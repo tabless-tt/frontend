@@ -30,13 +30,16 @@ class LoginPage extends React.Component {
         // check auth for proper info
         console.log(this.state.auth);
         this.props.LogIn(this.state.auth).then(() => {
-            this.props.history.push('/home');
+            // this.props.history.push('/home');
+            window.location.reload();
         })
     }
 
 
     render() {
         return (
+            <div className="topbar">
+                <p>Tabless Thursday</p> 
             <div className="login-container">
                 <div className="login-inner-container">
                 <h3> Login </h3> 
@@ -64,6 +67,7 @@ class LoginPage extends React.Component {
                 </form>
                 </div>
             </div>
+        </div>
         )};
 }
 

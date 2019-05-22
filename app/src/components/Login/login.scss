@@ -1,6 +1,18 @@
 @import '../../stylevariables.scss';
 
 /* Login Styles */
+.topbar {
+    height: 50px;
+    padding-top: 10px;
+    background-color: #1B98E0;
+    font-family: $lato;
+    text-align: start;
+    p { 
+        font-size: 30px;
+        color: white;
+        margin-left: 10px;
+    }
+}
 
 .login-container {
     width: 500px;
@@ -13,9 +25,15 @@
     
     .login-inner-container {
         background-color: $offwhite;
+        text-align: center;
 
         h3 {
+            font-family: $lato;
             padding-top: 20px;
+        }
+
+        h4 {
+            font-family: $lato;
         }
 
         .login-form {
@@ -23,6 +41,7 @@
             justify-content: space-evenly;
             align-items: center;
             flex-direction: column;
+            font-family: $roboto;
 
             input {
                 margin-top: 10px;
@@ -54,13 +73,19 @@
         background-color: $offwhite;
 
         h3 {
+            font-family: $lato;
             padding-top: 20px;
+        }
+
+        h4 {
+            font-family: $lato;
         }
         .register-form {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            font-family: $roboto;
 
             input {
                 margin-top: 10px;
@@ -80,10 +105,22 @@
 
 
 .logoutbar {
-    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    background-color: #1B98E0;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    align-items: center;
+    font-family: $lato;
+
+    p {
+        font-size: 30px;
+        color: white;
+        margin: 0 auto;
+        margin-left: 10px;
+    }
     .logout-btn {
+        margin-right: 10px;
         width: 100px;
     }
 }

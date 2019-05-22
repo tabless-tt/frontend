@@ -30,13 +30,16 @@ class RegisterPage extends React.Component {
         console.log(this.state.regauth);
 
         this.props.Register(this.state.regauth).then( () => {
-            this.props.history.push('/home');
+            // this.props.history.push('/home');
+            window.location.reload();
         })
     }
 
 
     render() {
         return (
+            <div className="topbar">
+                <p>Tabless Thursday</p> 
             <div className="register-container">
                 <div className="register-inner-container">
                 <h3> Register </h3>
@@ -69,6 +72,7 @@ class RegisterPage extends React.Component {
                 </form>
                 </div>
             </div>
+        </div>
     )};
 }
 

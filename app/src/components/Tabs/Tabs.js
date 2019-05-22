@@ -6,7 +6,7 @@ import { fetchTabs, newTab } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import Tab from './Tab';
-import './tabstyles.css';
+import './tabstyles.scss';
 
 class Tabs extends React.Component {
     state = {
@@ -74,9 +74,9 @@ class Tabs extends React.Component {
             return <h1> loading </h1>
         else
             return (
-                <div>
+                <div className="tabs-wrapper">
                     <div className="tab-header">
-                        <button onClick={() => this.toggle()}> Add a new Tab </button>
+                        <button className="newtab-btn" onClick={() => this.toggle()}> Add a new Tab </button>
                     </div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}> Add a new Tab </ModalHeader>
@@ -119,10 +119,12 @@ class Tabs extends React.Component {
                             </form>
                             </ModalBody>
                     </Modal>
+                <div className="tabs-container">
                     {this.state.tabs.map(tab => {
                         return <Tab key={tab.tab_id} tab={tab} />;
                     })}
                 </div>
+            </div>
             );
     }
 }
