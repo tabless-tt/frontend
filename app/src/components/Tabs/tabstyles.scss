@@ -35,7 +35,6 @@
         flex-wrap: wrap;
         align-content: center;
     }
-
 }
 
 
@@ -45,13 +44,33 @@
     margin-top: 10px;
     border: 1.5px solid $blue1;
     width: 500px;
+    height: 200px;
     border-radius: 5px;
 
     .tab {
-        padding: 5px;
+        padding: 10px;
         .tab-head {
             display: flex;
             justify-content: space-evenly;
+        }
+        .tab-body {
+            border-top: 1px dashed $blue1;
+            margin-top: 10px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+
+            h5 {
+                font-size: 20px;
+                margin-right: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
         }
 
 

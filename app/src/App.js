@@ -15,11 +15,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Route path="/home" component={Home} />
+      </div>
+
+        <Route exact path="/" component={Home} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={RegisterPage} />
-        <PrivateRoute exact path="/tabs" component={Tabs} />
-      </div>
+        {/* <PrivateRoute exact path="/tabs" component={Tabs} /> */}
     </Router>
   );
 }

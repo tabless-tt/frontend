@@ -30,8 +30,8 @@ class RegisterPage extends React.Component {
         console.log(this.state.regauth);
 
         this.props.Register(this.state.regauth).then( () => {
-            // this.props.history.push('/home');
-            window.location.reload();
+            this.props.history.push('/');
+            //window.location.reload();
         })
     }
 

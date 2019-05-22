@@ -1,9 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
+import { Redirect } from 'react-router-dom';
 import LogoutBar from '../components/Login/LogoutBar';
+// import LoginPage from '../components/Login/LoginPage';
+
 import Tabs from '../components/Tabs/Tabs';
-import LoginPage from '../components/Login/LoginPage';
+
 
 class Home extends React.Component {
     state={
@@ -16,13 +18,11 @@ class Home extends React.Component {
                     <LogoutBar />
                     <Tabs />
                 </div>
-            )
+                );
        else 
         return ( 
-            <div>
-                <LoginPage />
-            </div> 
-        )
+                <Redirect to='/login' />
+        );
     }
 }
 

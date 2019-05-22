@@ -30,8 +30,8 @@ class LoginPage extends React.Component {
         // check auth for proper info
         console.log(this.state.auth);
         this.props.LogIn(this.state.auth).then(() => {
-            // this.props.history.push('/home');
-            window.location.reload();
+            this.props.history.push('/');
+            //window.location.reload();
         })
     }
 
