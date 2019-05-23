@@ -136,15 +136,7 @@ class Tabs extends React.Component {
                                     onChange={this.modalhandleChanges}
                                     />
                                 </div>
-                                {/* <input
-                                    type="text"
-                                    name="favicon"
-                                    placeholder="Favicon URL"
-                                    value={this.state.newtab.favicon}
-                                    onChange={this.modalhandleChanges}
-                                    /> */}
-
-                                    <button> Submit </button>
+                                <button> Submit </button>
                             </form>
                             </ModalBody>
                     </Modal>

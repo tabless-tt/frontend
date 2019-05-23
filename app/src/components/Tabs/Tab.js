@@ -133,14 +133,6 @@ class Tab extends React.Component {
                                             value={this.state.updatedtab.category}
                                         />
                                     </div>
-                                    {/* <p> Favicon URL: </p>
-                                        <input 
-                                            type="text"
-                                            name="favicon"
-                                            placeholder={this.props.tab.favicon}
-                                            onChange={this.modalhandleChanges} 
-                                            value={this.state.updatedtab.favicon}
-                                        /> */}
                                     <div className="desc-wrap">
                                     <p> Description: </p>
                                         <textarea
