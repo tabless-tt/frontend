@@ -102,7 +102,114 @@
             margin-top: 10px;
             padding-top: 10px;
         }
-
-
     }
 }
+
+// Modal styles
+
+.modal-open {    
+    .modal-content {
+        .modal-header {
+            display: flex;
+            justify-content: flex-start;
+            font-family: $lato;
+            .modal-title {
+            }
+            .del-btn {
+                width: 100px;
+                font-size: 18px;
+                margin-left: 240px;
+                border: 2px solid $blue4;
+                background-color: $blue2;
+                color: $offwhite;
+                height: 30px;
+
+                &:hover {
+                    background-color: $offwhite;
+                    color: $blue4;
+                    border: 2px solid $blue2;
+                }
+            }
+        }
+        .modal-body {
+            font-family: $roboto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;;
+            align-items: center;
+             p {
+                 font-size: 18px;
+                 margin-top: 5px;
+                 margin-bottom: 5px;
+             }
+            .title-wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .title-input {
+                    padding: 5px;
+                }
+            }
+            .web-wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .website-input {
+                    padding: 5px;
+                }
+            }
+            .cat-wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .category-input {
+                    padding: 5px;
+                }
+            }
+            .desc-wrap {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                .description-input {
+                    margin: 0;
+                    padding: 5px;
+                    height: 100px;
+                }
+            }
+            button {
+                margin-left: 40px;
+                width: 185px;
+                height: 50px; 
+                margin-top: 30px;
+                border-radius: 5px;
+                background-color: $blue4;
+                border: none;
+                color: white;
+                &:hover {
+                    background-color: white;
+                    color: $blue4;
+                    border: 1px solid $blue4;
+                }
+            }
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: center;
+            .submit-btn {
+                width: 185px;
+                height: 50px;
+                border-radius: 5px;
+                background-color: $blue4;
+                border: none;
+                color: white;
+    
+                &:hover {
+                    background-color: white;
+                    color: $blue4;
+                    border: 1px solid $blue4;
+                }
+            }
+        }
+    }
+}
+

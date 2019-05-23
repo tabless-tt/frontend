@@ -91,33 +91,42 @@ class Tab extends React.Component {
                     </div>
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                            <ModalHeader> Edit your Tab <button onClick={this.deleteTabHandler}> X </button> </ModalHeader>
-                            <form onSubmit={this.submitHandler}>
-                                <ModalBody> 
+                            <ModalHeader> Edit your Tab <button className="del-btn" onClick={this.deleteTabHandler}> Delete </button> </ModalHeader>
+                            <form className="tab-form" onSubmit={this.submitHandler}>
+                                <ModalBody>
+                                <div className="title-wrap"> 
                                     <p> Title: </p>
                                         <input 
+                                            className="title-input"
                                             type="text"
                                             name="title"
                                             placeholder={this.props.tab.title}
                                             onChange={this.modalhandleChanges}
                                             value={this.state.updatedtab.title} 
                                         />
+                                </div>
+                                <div className='web-wrap'>
                                     <p> Website URL: </p>
                                         <input 
+                                            className="website-input"
                                             type="text"
                                             name="website"
                                             placeholder={this.props.tab.website}
                                             onChange={this.modalhandleChanges} 
                                             value={this.state.updatedtab.website}
                                         />
+                                    </div>
+                                    <div className='cat-wrap'>
                                     <p> Category: </p>
-                                        <input 
+                                        <input
+                                            className="category-input" 
                                             type="text"
                                             name="category"
                                             placeholder={this.props.tab.category}
                                             onChange={this.modalhandleChanges} 
                                             value={this.state.updatedtab.category}
                                         />
+                                    </div>
                                     {/* <p> Favicon URL: </p>
                                         <input 
                                             type="text"
@@ -126,16 +135,19 @@ class Tab extends React.Component {
                                             onChange={this.modalhandleChanges} 
                                             value={this.state.updatedtab.favicon}
                                         /> */}
+                                    <div className="desc-wrap">
                                     <p> Description: </p>
-                                        <input
+                                        <textarea
+                                            className="description-input"
                                             type="text"
                                             name="description"
                                             placeholder={this.props.tab.description}
                                             onChange={this.modalhandleChanges} 
                                             value={this.state.updatedtab.description}
                                         />
+                                    </div>
                                 </ModalBody>
-                                <ModalFooter><button> Submit Changes </button> </ModalFooter>
+                                <ModalFooter><button className='submit-btn'> Submit Changes </button> </ModalFooter>
                         </form>
                 </Modal>
             </div>

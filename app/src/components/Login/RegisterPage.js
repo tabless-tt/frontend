@@ -67,7 +67,7 @@ class RegisterPage extends React.Component {
                         value={this.state.regauth.email}
                     />
 
-                    <button> Register </button>
+                    <button> Submit </button>
                     <h4> Already a member? Log in <Link to="/login"> here </Link></h4>
                 </form>
                 </div>
