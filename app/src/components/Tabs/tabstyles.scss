@@ -1,0 +1,78 @@
+@import '../../stylevariables.scss';
+
+
+//Tabs page styling
+.tabs-wrapper {
+    width: 100%;
+    margin-top: 15px;
+
+    .newtab-btn {
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        background-color: $blue4;
+        border: none;
+        color: white;
+
+        &:hover {
+            background-color: white;
+            color: $blue4;
+            border: 1px solid $blue4;
+        }
+    }
+
+    .tab-header {
+        margin: 0 auto;
+        height: 50px;
+        margin-bottom: 25px;
+    }
+
+    .tabs-container {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+}
+
+
+//tab styling
+
+.tab-wrapper {
+    margin-top: 10px;
+    border: 1.5px solid $blue1;
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+
+    .tab {
+        padding: 10px;
+        .tab-head {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .tab-body {
+            border-top: 1px dashed $blue1;
+            margin-top: 10px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: center;
+
+            h5 {
+                font-size: 20px;
+                margin-right: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+
+
+    }
+}

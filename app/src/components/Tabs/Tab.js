@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { deleteTab, updateTab, fetchTabs } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
+import './tabstyles.scss';
 
 // props title, website, category
 
@@ -72,64 +73,72 @@ class Tab extends React.Component {
     }
 
     render() {
-            return (
-                <div className="tab-container">
-                    <div className="tab">
+        return (
+            <div className="tab-wrapper">
+                <div className="tab">
+                    <div className='tab-head'>
                         <img src={`${this.props.tab.website}/favicon.ico`} alt='stariconsmall'/>
                         <h3 className='tab-title'>{this.props.tab.title}</h3>
-                        <p className='tab-website'>{this.props.tab.website}</p>
                         <button className='editbutton' onClick={this.toggle}>Edit</button>
                     </div>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                                <ModalHeader> Edit your Tab <button onClick={this.deleteTabHandler}> X </button> </ModalHeader>
-                                <form onSubmit={this.submitHandler}>
-                                    <ModalBody> 
-                                        <p> Title: </p>
-                                            <input 
-                                                type="text"
-                                                name="title"
-                                                placeholder={this.props.tab.title}
-                                                onChange={this.modalhandleChanges}
-                                                value={this.state.updatedtab.title} 
-                                            />
-                                        <p> Website URL: </p>
-                                            <input 
-                                                type="text"
-                                                name="website"
-                                                placeholder={this.props.tab.website}
-                                                onChange={this.modalhandleChanges} 
-                                                value={this.state.updatedtab.website}
-                                            />
-                                        <p> Category: </p>
-                                            <input 
-                                                type="text"
-                                                name="category"
-                                                placeholder={this.props.tab.category}
-                                                onChange={this.modalhandleChanges} 
-                                                value={this.state.updatedtab.category}
-                                            />
-                                        {/* <p> Favicon URL: </p>
-                                            <input 
-                                                type="text"
-                                                name="favicon"
-                                                placeholder={this.props.tab.favicon}
-                                                onChange={this.modalhandleChanges} 
-                                                value={this.state.updatedtab.favicon}
-                                            /> */}
-                                        <p> Description: </p>
-                                            <input
-                                                type="text"
-                                                name="description"
-                                                placeholder={this.props.tab.description}
-                                                onChange={this.modalhandleChanges} 
-                                                value={this.state.updatedtab.description}
-                                            />
-                                    </ModalBody>
-                                    <ModalFooter><button> Submit Changes </button> </ModalFooter>
-                                </form>
-                    </Modal>
+                    <div className='tab-body'>
+                        <h5 className='tab-category'>Category: {this.props.tab.category} </h5>
+                        <a className='tab-website' href={this.props.tab.website}>{this.props.tab.website}</a>
+                    </div>
+                    <div className='tab-end'>
+                        <p className='tab-description'>{this.props.tab.description}</p>
+                    </div>
                 </div>
-                )};
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                            <ModalHeader> Edit your Tab <button onClick={this.deleteTabHandler}> X </button> </ModalHeader>
+                            <form onSubmit={this.submitHandler}>
+                                <ModalBody> 
+                                    <p> Title: </p>
+                                        <input 
+                                            type="text"
+                                            name="title"
+                                            placeholder={this.props.tab.title}
+                                            onChange={this.modalhandleChanges}
+                                            value={this.state.updatedtab.title} 
+                                        />
+                                    <p> Website URL: </p>
+                                        <input 
+                                            type="text"
+                                            name="website"
+                                            placeholder={this.props.tab.website}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.website}
+                                        />
+                                    <p> Category: </p>
+                                        <input 
+                                            type="text"
+                                            name="category"
+                                            placeholder={this.props.tab.category}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.category}
+                                        />
+                                    {/* <p> Favicon URL: </p>
+                                        <input 
+                                            type="text"
+                                            name="favicon"
+                                            placeholder={this.props.tab.favicon}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.favicon}
+                                        /> */}
+                                    <p> Description: </p>
+                                        <input
+                                            type="text"
+                                            name="description"
+                                            placeholder={this.props.tab.description}
+                                            onChange={this.modalhandleChanges} 
+                                            value={this.state.updatedtab.description}
+                                        />
+                                </ModalBody>
+                                <ModalFooter><button> Submit Changes </button> </ModalFooter>
+                        </form>
+                </Modal>
+            </div>
+            )};
     }
 
 

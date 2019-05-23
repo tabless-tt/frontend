@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Register } from '../../actions';
+import { Link } from 'react-router-dom';
 
-import './login.css';
+import './login.scss';
 
 class RegisterPage extends React.Component {
     state = {
@@ -29,14 +30,18 @@ class RegisterPage extends React.Component {
         console.log(this.state.regauth);
 
         this.props.Register(this.state.regauth).then( () => {
-            this.props.history.push('/tabs');
+            this.props.history.push('/');
+            //window.location.reload();
         })
     }
 
 
     render() {
         return (
+            <div className="topbar">
+                <p>Tabless Thursday</p> 
             <div className="register-container">
+                <div className="register-inner-container">
                 <h3> Register </h3>
                 <form className="register-form" onSubmit={this.register}>
 
@@ -63,8 +68,11 @@ class RegisterPage extends React.Component {
                     />
 
                     <button> Register </button>
+                    <h4> Already a member? Log in <Link to="/login"> here </Link></h4>
                 </form>
+                </div>
             </div>
+        </div>
     )};
 }
 
