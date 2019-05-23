@@ -30,9 +30,7 @@ export const LogIn = credentials => dispatch => {
             `https://tabless-thursday-backend.herokuapp.com/api/login`, credentials
         )
         .then( res => {
-            //checking results
-            //console.log(res.data.message);
-            //console.log(res.data)
+            //setting these on local so we can grab them easily later
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('userid', res.data.user.id);
             dispatch({type: LOGIN_SUCCESS, payload: res.data});
@@ -58,9 +56,6 @@ export const Register = newUser => dispatch => {
             `https://tabless-thursday-backend.herokuapp.com/api/register`, newUser
         )
         .then(res => {
-            //checking results
-            //console.log('Register data: ');
-            //console.log(res.data);
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('userid', res.data.saved.id);
             dispatch({type: REGISTER_SUCCESS, payload: res.data});
@@ -86,11 +81,7 @@ export const fetchTabs = id => dispatch => {
     axiosAuth()
         .get(`https://tabless-thursday-backend.herokuapp.com/api/users/${id}`)
         .then(res => {
-            //console.log('tab data: ')
-            //console.log(id);
             console.log(res.data.tabs)
-
-            //let tabs = res.data.filter(tab => tab.user_id === id)
             dispatch({type: TABFETCH_SUCCESS, payload: res.data.tabs})
         })
         .catch(error => {
@@ -107,12 +98,10 @@ export const NEWTAB_FAILURE = 'NEWTAB_FAILURE';
 
 
 export const newTab = tab => dispatch => {
-    //console.log('tab is now inside newTab and: ');
     tab = {
         ...tab, 
         user_id: localStorage.getItem('userid')
     }
-    //console.log(tab);
     dispatch({type: NEWTAB_START});
     axiosAuth()
         .post(`https://tabless-thursday-backend.herokuapp.com/api/tabs`, tab)
@@ -122,7 +111,7 @@ export const newTab = tab => dispatch => {
             dispatch({type: NEWTAB_SUCCESS, payload: res.data[0]})
         })
         .catch(error => {
-            //console.log(error);
+            console.log(error);
             dispatch({type: NEWTAB_FAILURE});
         })
 }
@@ -141,8 +130,6 @@ export const deleteTab = id => dispatch => {
     axiosAuth()
         .delete(`https://tabless-thursday-backend.herokuapp.com/api/tabs/${id}`)
         .then(res => {
-            console.log('inside delete');
-            console.log(res);
             dispatch({type: DELETETAB_SUCCESS});
         })
         .catch(error => {
@@ -160,20 +147,10 @@ export const UPDATETAB_FAILURE = 'UPDATETAB_FAILURE';
 // update tab action
 
 export const updateTab = (updatedTab, tabid) => dispatch => {
-    // let tab = {
-    //     ...updatedTab,
-    //     tab_id: tabid
-    // }
-    console.log('inside updateTab');
-    console.log(updatedTab);
-    console.log(tabid);
-    //console.log(tab);
     dispatch({type: UPDATETAB_START})
     axiosAuth()
         .put(`https://tabless-thursday-backend.herokuapp.com/api/tabs/${tabid}`, updatedTab)
         .then(res => {
-            console.log('inside .then of updated tab');
-            console.log(res);
             dispatch({type: UPDATETAB_SUCCESS});
         })
         .catch(error => {
@@ -182,5 +159,3 @@ export const updateTab = (updatedTab, tabid) => dispatch => {
         })
 
 }
-
-//Sort the categories?? 

@@ -31,7 +31,6 @@ class RegisterPage extends React.Component {
 
         this.props.Register(this.state.regauth).then( () => {
             this.props.history.push('/');
-            //window.location.reload();
         })
     }
 
