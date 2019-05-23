@@ -11,23 +11,45 @@
         display: flex;
         justify-content: center;
         height: 50px;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
         
         .newtab-btn {
-            width: 200px;
-            height: 50px;
-            margin: 0 auto;
-            border-radius: 5px;
-            background-color: $blue4;
             border: none;
-            color: white;
+            border-radius: 50px;
+            background-color: $blue1;
+            color: none;
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
 
             &:hover {
-                background-color: white;
-                color: $blue4;
-                border: 1px solid $blue4;
+                background-color: $blue4;
+            }
+            
+            .fa-plus-circle {
+            color: $blue4;
+            &:hover {
+                color: $offwhite;
+            }
             }
         }
+        
+        // .newtab-btn {
+        //     width: 200px;
+        //     height: 50px;
+        //     margin: 0 auto;
+        //     border-radius: 5px;
+        //     background-color: $blue4;
+        //     border: none;
+        //     color: white;
+
+        //     &:hover {
+        //         background-color: white;
+        //         color: $blue4;
+        //         border: 1px solid $blue4;
+        //     }
+        // }
     }
 
     .tabs-container {
@@ -46,7 +68,7 @@
 .tab-wrapper {
     margin-top: 10px;
     margin-bottom: 10px;
-    border: 1.5px solid $blue1;
+    border: 2px solid $blue2;
     width: 500px;
     height: 100%;
     border-radius: 5px;
@@ -55,18 +77,23 @@
             padding-top: 5px;
             padding-left: 10px;
             padding-right: 10px;
+            padding-bottom: 5px;
+            background-color: $offwhite;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            img {
-                justify-self: flex-start;
+        
+            .favicon {
+                width: 30px;
+                height: 30px;
             }
+
             h3 {
                 font-family: $lato;
                 font-weight: 590;
             }
             button {
-                border-radius: 10px;
+                border-radius: 5px;
                 background-color: $blue2;
                 color: $offwhite;
                 justify-self: flex-end;
@@ -75,23 +102,29 @@
                     background-color: $offwhite;
                 }
             }
+
+            .fa-edit {
+                margin-left: 5px;
+            }
         }
         .tab-body {
             width: 100%;
             border-top: 2px dashed $blue3;
             border-bottom: 2px dashed $blue3;
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 0px;
+            padding-top: 0px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             background-color: $blue1;
+            font-family: $lato;
 
             h5 {
                 color: white;
                 padding-left: 10px;
                 font-size: 18px;
                 margin-right: 20px;
+                font-weight: 500;
             }
 
             a {
@@ -109,6 +142,11 @@
         .tab-end {
             padding: 10px;
             font-family: $roboto;
+            background-color: $offwhite;
+            p {
+                font-size: 16px;
+                overflow-wrap: break-word;
+            }
         }
     }
 }

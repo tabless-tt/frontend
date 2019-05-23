@@ -14,7 +14,7 @@ class LogoutBar extends React.Component {
         return (
             <div className="logoutbar"> 
                 <p>Tabless Thursday</p> 
-            <button className="logout-btn" onClick={this.logoutHandler}> Logout </button>
+            <button className="logout-btn" onClick={this.logoutHandler}><i class="fas fa-sign-out-alt fa-2x" /></button>
             </div>
             
         )
