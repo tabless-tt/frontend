@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 
 import './login.scss';
 
-//import actions
-
 class LoginPage extends React.Component {
     state = {
         auth: {
@@ -31,7 +29,6 @@ class LoginPage extends React.Component {
         console.log(this.state.auth);
         this.props.LogIn(this.state.auth).then(() => {
             this.props.history.push('/');
-            //window.location.reload();
         })
     }
 
@@ -56,7 +53,7 @@ class LoginPage extends React.Component {
                     />
 
                     <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         

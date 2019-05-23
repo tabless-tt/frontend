@@ -24,22 +24,23 @@ class Tabs extends React.Component {
     }
 
     componentDidMount() {
-        //console.log("running", localStorage.getItem('userid'));
         this.setState({user: this.props.userInfo});
-        //fetch tabs action creator
+        //fetch tabs action creator by grabbing id from local and using it.
         let id = localStorage.getItem('userid');
         let temp = this.props.fetchTabs(id);
+        //set logged in user's tabs on state
         this.setState({tabs: temp});
     }
 
     componentDidUpdate(prevProps) {
-        console.log('prev', prevProps);
+        //if the tabs in store are different from the state tabs, we need to update the state.
+        //This is to refresh the page when a tab is added/deleted automatically
         if (this.props.userTabs !== this.state.tabs) {
             this.setState({tabs: this.props.userTabs})
         }
 
         if (this.props.deletingTab) {
-            //console.log('deleting is true');
+           //if a tab is deleted, grab the tabs again.
             let id = localStorage.getItem('userid');
             this.props.fetchTabs(id);
         }
@@ -55,6 +56,7 @@ class Tabs extends React.Component {
     };
 
     submitHandler = e => {
+        //new tab handler
         e.preventDefault();
         this.props.newTab(this.state.newtab)
 
@@ -71,7 +73,6 @@ class Tabs extends React.Component {
     }
 
     toggle = () => {
-        //console.log("inside toggle");
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
@@ -135,15 +136,7 @@ class Tabs extends React.Component {
                                     onChange={this.modalhandleChanges}
                                     />
                                 </div>
-                                {/* <input
-                                    type="text"
-                                    name="favicon"
-                                    placeholder="Favicon URL"
-                                    value={this.state.newtab.favicon}
-                                    onChange={this.modalhandleChanges}
-                                    /> */}
-
-                                    <button> Submit </button>
+                                <button> Submit </button>
                             </form>
                             </ModalBody>
                     </Modal>

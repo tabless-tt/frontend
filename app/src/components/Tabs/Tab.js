@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import { deleteTab, updateTab, fetchTabs } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-import fav from '../../assets/favicon-32x32.png';
-
 
 import './tabstyles.scss';
 
@@ -25,6 +23,7 @@ class Tab extends React.Component {
     }
 
     componentDidMount() {
+        //sets state equal to the tab on store
         this.setState({updatedtab: {
             title: this.props.tab.title,
             website: this.props.tab.website,
@@ -35,6 +34,7 @@ class Tab extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+        //checks store to see if tab is updating, if so it grabs the tabs again to refresh the page.
         if (this.props.updatingTab) {
             let id = localStorage.getItem('userid');
             this.props.fetchTabs(id);
@@ -47,7 +47,9 @@ class Tab extends React.Component {
             }})
         }
     }
+
     modalhandleChanges = e => {
+        //handle changes for modals
         this.setState({
             updatedtab: {
                 ...this.state.updatedtab,
@@ -57,19 +59,21 @@ class Tab extends React.Component {
     };
 
     toggle = () => {
-        //console.log("tab: ", this.state.updatedtab);
+        //toggles showing the modals
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
     }
 
     submitHandler = e => {
+        //submit edits for tabs. Passes the updated tab, and the id from the store. 
         e.preventDefault();
         this.props.updateTab(this.state.updatedtab, this.props.tab.tab_id);
         this.toggle();
     }
 
     deleteTabHandler = e => {
+        //deletes tabs
         e.preventDefault();
         this.props.deleteTab(this.props.tab.tab_id)
         this.toggle();
@@ -85,7 +89,7 @@ class Tab extends React.Component {
                         <button className='editbutton' onClick={this.toggle}><i class="far fa-edit fa-1x" /></button>
                     </div>
                     <div className='tab-body'>
-                        <h5 className='tab-category'>{this.props.tab.category.toUpperCase()}</h5>
+                        <h5 className='tab-category'>{this.props.tab.category}</h5>
                         <a className='tab-website' href={this.props.tab.website}>{this.props.tab.website}</a>
                     </div>
                     <div className='tab-end'>
@@ -129,14 +133,6 @@ class Tab extends React.Component {
                                             value={this.state.updatedtab.category}
                                         />
                                     </div>
-                                    {/* <p> Favicon URL: </p>
-                                        <input 
-                                            type="text"
-                                            name="favicon"
-                                            placeholder={this.props.tab.favicon}
-                                            onChange={this.modalhandleChanges} 
-                                            value={this.state.updatedtab.favicon}
-                                        /> */}
                                     <div className="desc-wrap">
                                     <p> Description: </p>
                                         <textarea

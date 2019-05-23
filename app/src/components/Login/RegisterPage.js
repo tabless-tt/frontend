@@ -31,7 +31,6 @@ class RegisterPage extends React.Component {
 
         this.props.Register(this.state.regauth).then( () => {
             this.props.history.push('/');
-            //window.location.reload();
         })
     }
 
@@ -55,7 +54,7 @@ class RegisterPage extends React.Component {
                         value={this.state.regauth.username}
                     />
                      <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         onChange={this.handleChanges}
