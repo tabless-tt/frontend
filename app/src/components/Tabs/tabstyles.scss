@@ -113,8 +113,6 @@
             display: flex;
             justify-content: flex-start;
             font-family: $lato;
-            .modal-title {
-            }
             .del-btn {
                 width: 100px;
                 font-size: 18px;
@@ -135,7 +133,8 @@
             font-family: $roboto;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;;
+            justify-content: center;
+            flex-direction: column;
             align-items: center;
              p {
                  font-size: 18px;
@@ -189,6 +188,25 @@
                     background-color: white;
                     color: $blue4;
                     border: 1px solid $blue4;
+                }
+            }
+        }
+
+        //for the edit modal specifically. The form wrap messes with the width
+        // a bit, so this is a necessary change.
+        .tab-form {
+            .modal-body {
+                .title-wrap {
+                    width: 55%;
+                }
+                .web-wrap {
+                    width: 55%;
+                }
+                .cat-wrap {
+                    width: 55%;
+                }
+                .desc-wrap {
+                    width: 55%;
                 }
             }
         }

@@ -78,7 +78,7 @@ class Tab extends React.Component {
             <div className="tab-wrapper">
                 <div className="tab">
                     <div className='tab-head'>
-                        <img src={`${this.props.tab.website}/favicon.ico`} alt={`https://tabless-thursday.netlify.com/favicon.ico`}/>
+                        <img src={`${this.props.tab.website}/favicon.ico`} alt="Favicon"/>
                         <h3 className='tab-title'>{this.props.tab.title}</h3>
                         <button className='editbutton' onClick={this.toggle}>Edit</button>
                     </div>
