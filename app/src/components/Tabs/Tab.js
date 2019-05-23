@@ -80,7 +80,7 @@ class Tab extends React.Component {
             <div className="tab-wrapper">
                 <div className="tab">
                     <div className='tab-head'>
-                        <img src={`${this.props.tab.website}/favicon.ico`} alt="Icon"/>
+                        <img className='favicon' src={`${this.props.tab.website}/favicon.ico`} alt="Icon"/>
                         <h3 className='tab-title'>{this.props.tab.title}</h3>
                         <button className='editbutton' onClick={this.toggle}><i class="far fa-edit fa-1x" /></button>
                     </div>
