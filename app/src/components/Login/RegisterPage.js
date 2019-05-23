@@ -38,8 +38,10 @@ class RegisterPage extends React.Component {
 
     render() {
         return (
+            <div>
             <div className="topbar">
-                <p>Tabless Thursday</p> 
+                <p>Tabless Thursday</p>
+            </div>
             <div className="register-container">
                 <div className="register-inner-container">
                 <h3> Register </h3>

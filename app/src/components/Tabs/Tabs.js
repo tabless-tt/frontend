@@ -86,7 +86,7 @@ class Tabs extends React.Component {
             return (
                 <div className="tabs-wrapper">
                     <div className="tab-header">
-                        <button className="newtab-btn" onClick={() => this.toggle()}> Add a new Tab </button>
+                        <span></span><button className="newtab-btn" onClick={() => this.toggle()}><i class="fas fa-plus-circle fa-3x" /></button>
                     </div>
                     <Modal className="Modal" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}> Add a new Tab </ModalHeader>

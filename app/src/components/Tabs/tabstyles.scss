@@ -11,23 +11,47 @@
         display: flex;
         justify-content: center;
         height: 50px;
-        margin-bottom: 25px;
+        margin-bottom: 10px;
+        
+
         
         .newtab-btn {
-            width: 200px;
-            height: 50px;
-            margin: 0 auto;
-            border-radius: 5px;
-            background-color: $blue4;
             border: none;
-            color: white;
+            border-radius: 50px;
+            background-color: $blue1;
+            color: none;
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            padding: 0;
 
             &:hover {
-                background-color: white;
-                color: $blue4;
-                border: 1px solid $blue4;
+                background-color: $blue4;
+            }
+            
+            .fa-plus-circle {
+            color: $blue4;
+            &:hover {
+                color: $offwhite;
+            }
             }
         }
+        
+        // .newtab-btn {
+        //     width: 200px;
+        //     height: 50px;
+        //     margin: 0 auto;
+        //     border-radius: 5px;
+        //     background-color: $blue4;
+        //     border: none;
+        //     color: white;
+
+        //     &:hover {
+        //         background-color: white;
+        //         color: $blue4;
+        //         border: 1px solid $blue4;
+        //     }
+        // }
     }
 
     .tabs-container {
@@ -66,7 +90,7 @@
                 font-weight: 590;
             }
             button {
-                border-radius: 10px;
+                border-radius: 5px;
                 background-color: $blue2;
                 color: $offwhite;
                 justify-self: flex-end;
@@ -74,6 +98,10 @@
                     color: $blue2;
                     background-color: $offwhite;
                 }
+            }
+
+            .fa-edit {
+                margin-left: 5px;
             }
         }
         .tab-body {
@@ -109,6 +137,10 @@
         .tab-end {
             padding: 10px;
             font-family: $roboto;
+            p {
+                font-size: 16px;
+                overflow-wrap: break-word;
+            }
         }
     }
 }

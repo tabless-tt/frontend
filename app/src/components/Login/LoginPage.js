@@ -38,8 +38,10 @@ class LoginPage extends React.Component {
 
     render() {
         return (
+            <div>
             <div className="topbar">
                 <p>Tabless Thursday</p> 
+            </div>
             <div className="login-container">
                 <div className="login-inner-container">
                 <h3> Login </h3> 
@@ -66,8 +68,8 @@ class LoginPage extends React.Component {
 
                     <h4> Not a member? Sign up <Link to="/signup"> here </Link></h4>
                 </form>
-                </div>
             </div>
+        </div>
         </div>
         )};
 }
