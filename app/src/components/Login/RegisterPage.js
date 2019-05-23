@@ -55,7 +55,7 @@ class RegisterPage extends React.Component {
                         value={this.state.regauth.username}
                     />
                      <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         onChange={this.handleChanges}

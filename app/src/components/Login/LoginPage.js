@@ -56,7 +56,7 @@ class LoginPage extends React.Component {
                     />
 
                     <input
-                        type="text"
+                        type="password"
                         name="password"
                         placeholder="Password"
                         

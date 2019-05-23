@@ -16,7 +16,7 @@
         .newtab-btn {
             border: none;
             border-radius: 50px;
-            background-color: $blue1;
+            background-color: $offwhite;
             color: none;
             width: 50px;
             height: 50px;
@@ -28,7 +28,7 @@
             }
             
             .fa-plus-circle {
-            color: $blue4;
+            color: $blue1;
             &:hover {
                 color: $offwhite;
             }
@@ -93,16 +93,17 @@
                 font-weight: 590;
             }
             button {
+                border: 1px solid $blue4;
                 border-radius: 5px;
-                background-color: $blue2;
+                background-color: $blue4;
                 color: $offwhite;
                 justify-self: flex-end;
                 &:hover {
-                    color: $blue2;
+                    color: $blue4;
+                    border: 1px solid $blue4;
                     background-color: $offwhite;
                 }
             }
-
             .fa-edit {
                 margin-left: 5px;
             }
@@ -163,15 +164,15 @@
                 width: 100px;
                 font-size: 18px;
                 margin-left: 240px;
-                border: 2px solid $blue4;
-                background-color: $blue2;
+                border: 2px solid $blue1;
+                background-color: $blue1;
                 color: $offwhite;
                 height: 30px;
 
                 &:hover {
                     background-color: $offwhite;
-                    color: $blue4;
-                    border: 2px solid $blue2;
+                    color: $blue1;
+                    border: 2px solid $blue1;
                 }
             }
         }

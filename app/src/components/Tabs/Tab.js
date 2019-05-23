@@ -85,7 +85,7 @@ class Tab extends React.Component {
                         <button className='editbutton' onClick={this.toggle}><i class="far fa-edit fa-1x" /></button>
                     </div>
                     <div className='tab-body'>
-                        <h5 className='tab-category'>{this.props.tab.category.toUpperCase()}</h5>
+                        <h5 className='tab-category'>{this.props.tab.category}</h5>
                         <a className='tab-website' href={this.props.tab.website}>{this.props.tab.website}</a>
                     </div>
                     <div className='tab-end'>
