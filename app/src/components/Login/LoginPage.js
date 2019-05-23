@@ -57,11 +57,12 @@ class LoginPage extends React.Component {
                         type="text"
                         name="password"
                         placeholder="Password"
+                        
                         onChange={this.handleChanges}
                         value={this.state.auth.password}
                     />
 
-                    <button> Login </button>
+                    <button> Submit </button>
 
                     <h4> Not a member? Sign up <Link to="/signup"> here </Link></h4>
                 </form>

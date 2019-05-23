@@ -6,6 +6,7 @@ import { fetchTabs, newTab } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import Tab from './Tab';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './tabstyles.scss';
 
 class Tabs extends React.Component {
@@ -56,6 +57,15 @@ class Tabs extends React.Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.newTab(this.state.newtab)
+
+        this.setState({
+            newtab: {
+                title: '',
+                website: '',
+                description: '',
+                category: '',
+                favicon: ''
+        }})
         //close modal
         this.toggle();
     }
@@ -78,35 +88,53 @@ class Tabs extends React.Component {
                     <div className="tab-header">
                         <button className="newtab-btn" onClick={() => this.toggle()}> Add a new Tab </button>
                     </div>
-                    <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <Modal className="Modal" isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}> Add a new Tab </ModalHeader>
                         <ModalBody>
                             <form className="newTab-form" onSubmit={this.submitHandler}>
-                                <p> Title: </p>
-                                <input 
+                                <div className="title-wrap">
+                                    <p> Title: </p>
+                                    <input
+                                        className="title-input"  
+                                        type="text"
+                                        name="title"
+                                        placeholder="Title"
+                                        value={this.state.newtab.title} 
+                                        onChange={this.modalhandleChanges}
+                                        />
+                                </div>
+                                <div className="web-wrap">
+                                    <p> Website: https://www.domain.com</p>
+                                    <input
+                                        className="website-input"  
+                                        type="text"
+                                        name="website"
+                                        placeholder="Website"
+                                        value={this.state.newtab.website} 
+                                        onChange={this.modalhandleChanges}
+                                        />
+                                </div>
+                                <div className="cat-wrap">
+                                <p> Category: </p>
+                                <input
+                                    className="category-input" 
                                     type="text"
-                                    name="title"
-                                    placeholder="Title"
-                                    value={this.state.newtab.title} 
+                                    name="category"
+                                    placeholder="Category"
+                                    value={this.state.newtab.category}
                                     onChange={this.modalhandleChanges}
                                     />
-                                <p> Website: https://www.domain.com</p>
-                                <input 
-                                    type="text"
-                                    name="website"
-                                    placeholder="Website"
-                                    value={this.state.newtab.website} 
-                                    onChange={this.modalhandleChanges}
-                                    />
+                                </div>
+                                <div className="desc-wrap"> 
                                 <p> Description: </p>
-                                <input 
+                                <textarea
                                     className="description-input"
                                     type="text"
                                     name="description"
-                                    placeholder="Description"
                                     value={this.state.newtab.description} 
                                     onChange={this.modalhandleChanges}
                                     />
+                                </div>
                                 {/* <input
                                     type="text"
                                     name="favicon"
