@@ -5,26 +5,30 @@
 .tabs-wrapper {
     width: 100%;
     margin-top: 15px;
-
-    .newtab-btn {
-        width: 200px;
-        height: 50px;
-        border-radius: 5px;
-        background-color: $blue4;
-        border: none;
-        color: white;
-
-        &:hover {
-            background-color: white;
-            color: $blue4;
-            border: 1px solid $blue4;
-        }
-    }
+    
 
     .tab-header {
         margin: 0 auto;
+        display: flex;
+        justify-content: center;
         height: 50px;
         margin-bottom: 25px;
+        
+        .newtab-btn {
+            width: 200px;
+            height: 50px;
+            margin: 0 auto;
+            border-radius: 5px;
+            background-color: $blue4;
+            border: none;
+            color: white;
+
+            &:hover {
+                background-color: white;
+                color: $blue4;
+                border: 1px solid $blue4;
+            }
+        }
     }
 
     .tabs-container {
@@ -48,29 +52,55 @@
     border-radius: 5px;
 
     .tab {
-        padding: 10px;
         .tab-head {
+            padding: 5px;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                justify-self: flex-start;
+            }
+
+            h3 {
+                font-family: $lato;
+            }
+
+            button {
+                justify-self: flex-end;
+            }
         }
         .tab-body {
-            border-top: 1px dashed $blue1;
+            width: 100%;
+            border-top: 2px dashed $blue3;
+            border-bottom: 2px dashed $blue3;
             margin-top: 10px;
             padding-top: 10px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: flex-start;
+            background-color: $blue1;
 
             h5 {
-                font-size: 20px;
+                color: white;
+                padding-left: 10px;
+                font-size: 18px;
                 margin-right: 20px;
             }
 
             a {
+                padding-right: 10px;
+                color: white;
                 text-decoration: none;
                 &:hover {
                     cursor: pointer;
                 }
             }
+        }
+
+        .tab-end {
+            margin-top: 10px;
+            padding-top: 10px;
         }
 
 

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { deleteTab, updateTab, fetchTabs } from '../../actions';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
+
 import './tabstyles.scss';
 
 // props title, website, category
@@ -77,13 +78,13 @@ class Tab extends React.Component {
             <div className="tab-wrapper">
                 <div className="tab">
                     <div className='tab-head'>
-                        <img src={`${this.props.tab.website}/favicon.ico`} alt='stariconsmall'/>
+                        <img src={`${this.props.tab.website}/favicon.ico`} alt={`https://tabless-thursday.netlify.com/favicon.ico`}/>
                         <h3 className='tab-title'>{this.props.tab.title}</h3>
                         <button className='editbutton' onClick={this.toggle}>Edit</button>
                     </div>
                     <div className='tab-body'>
-                        <h5 className='tab-category'>Category: {this.props.tab.category} </h5>
-                        <a className='tab-website' href={this.props.tab.website}>{this.props.tab.website}</a>
+                        <h5 className='tab-category'>{this.props.tab.category}</h5>
+                        <a className='tab-website' href={this.props.tab.website}>Website</a>
                     </div>
                     <div className='tab-end'>
                         <p className='tab-description'>{this.props.tab.description}</p>

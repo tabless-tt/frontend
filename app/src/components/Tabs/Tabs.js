@@ -56,6 +56,15 @@ class Tabs extends React.Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.newTab(this.state.newtab)
+
+        this.setState({
+            newtab: {
+                title: '',
+                website: '',
+                description: '',
+                category: '',
+                favicon: ''
+        }})
         //close modal
         this.toggle();
     }

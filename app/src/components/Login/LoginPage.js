@@ -57,6 +57,7 @@ class LoginPage extends React.Component {
                         type="text"
                         name="password"
                         placeholder="Password"
+                        
                         onChange={this.handleChanges}
                         value={this.state.auth.password}
                     />
